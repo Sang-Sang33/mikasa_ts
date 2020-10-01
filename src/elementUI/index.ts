@@ -1,4 +1,4 @@
-import { Select, Option, OptionGroup, Input, Tree, Dialog, Row, Col, Table, Message } from 'element-ui'
+import { Select, Option, OptionGroup, Input, Tree, Dialog, Row, Col, Table, Message, Button } from 'element-ui'
 const element = {
   install: function (Vue:any) {
     Vue.use(Select)
@@ -10,6 +10,7 @@ const element = {
     Vue.use(Row)
     Vue.use(Col)
     Vue.use(Table)
+    Vue.use(Button)
     Vue.prototype.$message = Message
   }
 }
