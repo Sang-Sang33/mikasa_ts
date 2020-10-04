@@ -12,33 +12,44 @@ import { Vue, Component } from "vue-property-decorator";
 import Login from "@/components/loginOrRegister/Login.vue";
 import { UserID, UserInfo } from "@/utils/interfaceData";
 import { loginCheck } from "@/http/api";
-
+import { State, Mutation } from "vuex-class";
 @Component({
   name: "loginPage",
   components: { Login }
 })
 export default class LoginPage extends Vue {
+  @State("userInfo") userInfo!: UserInfo;
+  @State("data") data!: string;
+  @Mutation("setUserInfo") setUserInfo: any;
   public isLoading = false;
-  public userInfo!: UserInfo;
   public sureLogin({ username, password }: UserID): void {
     this.isLoading = !this.isLoading;
     loginCheck({ username, password })
       .then(res => {
         this.isLoading = false;
         if (res.data.status === 0 && res.data.wdata) {
-          //   console.log("---------loginCheck----res.data----------------",res.data);
-          this.$cookies.set("oauth_token", res.data.wdata.oauth_token, 1);
-          this.userInfo = Object.assign({}, res.data.wdata);
-          delete this.userInfo.oauth_token;
-          //   console.log(this.userInfo,'---------userInfo---------');
+          this.setData(res);
         }
       })
       .catch(err => {
         this.isLoading = false;
       });
   }
+
+  public setData(res: any): void {
+    const userInfo: UserInfo = Object.assign({}, res.data.wdata) || {};
+    const oauthToken: string = res.data.wdata.oauth_token || "";
+    this.$cookies.set("oauth_token", oauthToken, "2d");
+    delete userInfo.oauth_token;
+    this.setUserInfo(userInfo);
+  }
+
   public toRegisterPage() {
     this.$router.push({ path: "/register", name: "register" });
+  }
+  created() {
+    console.log(this.userInfo);
+    console.log(this.data);
   }
 }
 </script>
