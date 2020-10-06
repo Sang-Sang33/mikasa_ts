@@ -1,17 +1,43 @@
-import { Select, Option, OptionGroup, Input, Tree, Dialog, Row, Col, Table, Message, Button } from 'element-ui'
+import {
+  Select,
+  Option,
+  OptionGroup,
+  Input,
+  Tree,
+  Dialog,
+  Row,
+  Col,
+  Table,
+  Message,
+  Button,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup
+} from 'element-ui'
+
+const components: any = {
+  Select,
+  Option,
+  OptionGroup,
+  Input,
+  Tree,
+  Dialog,
+  Row,
+  Col,
+  Table,
+  Button,
+  Menu,
+  Submenu,
+  MenuItem,
+  MenuItemGroup
+}
+
 const element = {
-  install: function (Vue:any) {
-    Vue.use(Select)
-    Vue.use(Option)
-    Vue.use(OptionGroup)
-    Vue.use(Input)
-    Vue.use(Tree)
-    Vue.use(Dialog)
-    Vue.use(Row)
-    Vue.use(Col)
-    Vue.use(Table)
-    Vue.use(Button)
+  install: function (Vue: any) {
+    Object.keys(components).forEach(key => Vue.use(components[key]));
     Vue.prototype.$message = Message
   }
 }
+
 export default element
