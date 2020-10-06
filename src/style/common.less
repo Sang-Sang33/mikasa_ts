@@ -1,3 +1,5 @@
+@import "./minxin.less";
+
 * {
     padding: 0;
     margin: 0;
@@ -28,15 +30,10 @@ input {
     cursor: pointer;
 }
 
-.fLeft {
-    float: left;
-}
-
-.fRight {
-    float: right;
-}
-
-h3.active {
-    color: #3eede7;
-    border-bottom: 2px solid brown;
+html,body,#app {
+    width: 100%;
+    height: 100vh;
+    background-color: @themeColor;
+    font-size: @fontSize;
+    color: @Color;
 }

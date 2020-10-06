@@ -1,0 +1,15 @@
+.fixed::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+.fLeft {
+  float: left;
+}
+.fRight {
+  float: right;
+}
+h3.active {
+  color: #3eede7;
+  border-bottom: 2px solid brown;
+}

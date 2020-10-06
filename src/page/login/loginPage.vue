@@ -19,7 +19,6 @@ import { State, Mutation } from "vuex-class";
 })
 export default class LoginPage extends Vue {
   @State("userInfo") userInfo!: UserInfo;
-  @State("data") data!: string;
   @Mutation("setUserInfo") setUserInfo: any;
   public isLoading = false;
   public sureLogin({ username, password }: UserID): void {
@@ -49,7 +48,6 @@ export default class LoginPage extends Vue {
   }
   created() {
     console.log(this.userInfo);
-    console.log(this.data);
   }
 }
 </script>
