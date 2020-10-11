@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <home-sidebar></home-sidebar>
+    <home-sidebar :isSidebarTop="isSidebarTop"></home-sidebar>
     <div class="article">article</div>
     <div class="login-window">loginWindow</div>
   </div>
@@ -17,10 +17,27 @@ import homeSidebar from "./children/home-sidebar.vue";
   components: { homeArticle, homeLogin, homeSidebar }
 })
 export default class HomeContent extends Vue {
-
+  public isSidebarTop: boolean = false;
+  public scrollTop: number = 0;
+  public mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+  public handleScroll() {
+    this.scrollTop =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+    console.log(this.scrollTop);
+    if(this.scrollTop >= 30){
+      this.isSidebarTop = true;
+    }
+    else {
+      this.isSidebarTop = false;
+    }
+  }
 }
 </script>
 
 <style lang="less">
-    @import "./home-content.less";
+@import "./home-content.less";
 </style>

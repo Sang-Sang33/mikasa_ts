@@ -3,9 +3,9 @@
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
-      background-color="#545c64"
       active-text-color="#ffd04b"
-      text-color="#fff"
+      text-color="#666"
+      background-color="#EBEEF5"
       @open="handleOpen"
       @close="handleClose"
     >
@@ -43,18 +43,22 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import { State } from "vuex-class";
 
 @Component
 export default class HomeSidebar extends Vue {
   @State("navList") navList: any;
-	@State("subList") subList: any;
+  @State("subList") subList: any;
+  @Prop(Boolean) public isSidebarTop!: boolean;
   public handleOpen(key: any, keyPath: any) {
     console.log(key, keyPath);
   }
   public handleClose(key: any, keyPath: any) {
     console.log(key, keyPath);
+  }
+  public mounted(){
+    console.log(this.isSidebarTop);
   }
 }
 </script>

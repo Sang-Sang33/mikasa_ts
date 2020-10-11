@@ -1,21 +1,24 @@
 .content {
+  position: relative;
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .content .sidebar {
+  position: fixed;
+  left: 20px;
   width: 15%;
 }
 .content .article {
   width: 50%;
-  height: 300px;
+  height: 1200px;
   margin: 0 20px;
   background-color: lightgreen;
   padding: 20px;
 }
 .content .login-window {
-  width: 30%;
+  width: 25%;
   height: 500px;
   background-color: lightblue;
   padding: 20px;

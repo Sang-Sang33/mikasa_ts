@@ -21,6 +21,7 @@ const state: any = {
         { index: "8", content: "风景", icon: "el-icon-picture-outline" },
         { index: "9", content: "风景", icon: "el-icon-picture-outline" },
         { index: "10", content: "风景", icon: "el-icon-picture-outline" },
+        { index: "11", content: "风景", icon: "el-icon-picture-outline" },
     ],
     subList: [
         {
