@@ -12,7 +12,11 @@ import {
   Menu,
   Submenu,
   MenuItem,
-  MenuItemGroup
+  MenuItemGroup,
+  Card,
+  Avatar,
+  Tag,
+  Badge
 } from 'element-ui'
 
 const components: any = {
@@ -28,7 +32,11 @@ const components: any = {
   Menu,
   Submenu,
   MenuItem,
-  MenuItemGroup
+  MenuItemGroup,
+  Card,
+  Avatar,
+  Tag,
+  Badge
 }
 
 const element = {

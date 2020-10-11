@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" :style="isSidebarTop?'top:0;':'top:51px;'">
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
