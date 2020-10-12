@@ -34,17 +34,20 @@ export default class LoginPage extends Vue {
         this.isLoading = false;
       });
   }
-
   public setData(res: any): void {
     const userInfo: UserInfo = Object.assign({}, res.data.wdata) || {};
     const oauthToken: string = res.data.wdata.oauth_token || "";
     this.$cookies.set("oauth_token", oauthToken, "2d");
     delete userInfo.oauth_token;
     this.setUserInfo(userInfo);
+    this.toHome();
   }
-
   public toRegisterPage() {
     this.$router.push({ path: "/register", name: "register" });
+  }
+  //登录成功后直接前往首页
+  public toHome() {
+    this.$router.push({ path: "/", name: "home" });
   }
   created() {
     console.log(this.userInfo);

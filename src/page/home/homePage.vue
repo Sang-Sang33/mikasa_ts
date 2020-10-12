@@ -15,9 +15,7 @@ import homeContent from "./home-content/home-content.vue";
     components:{ homeHeader, homeContent }
 })
 export default class Home extends Vue {
-    created(){
-        this.$message('这是一条消息提示');
-    }
+
 }
 
 </script>

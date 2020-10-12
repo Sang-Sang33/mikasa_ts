@@ -1,0 +1,17 @@
+.loginWindow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loginWindow > span {
+  color: #333;
+  font-size: 14px;
+  text-indent: 2em;
+  line-height: 30px;
+  margin: 40px 0;
+}
+.loginWindow .el-button {
+  width: 150px;
+  margin-bottom: 20px;
+}

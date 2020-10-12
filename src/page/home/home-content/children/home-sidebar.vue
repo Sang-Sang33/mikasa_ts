@@ -58,7 +58,7 @@ export default class HomeSidebar extends Vue {
     console.log(key, keyPath);
   }
   public mounted(){
-    console.log(this.isSidebarTop);
+    // console.log(this.isSidebarTop);
   }
 }
 </script>

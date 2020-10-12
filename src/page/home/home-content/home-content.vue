@@ -2,7 +2,7 @@
   <div class="content">
     <home-sidebar :isSidebarTop="isSidebarTop"></home-sidebar>
     <home-article></home-article>
-    <home-login :isLogin="isLogin"></home-login>
+    <home-login></home-login>
   </div>
 </template>
 
@@ -18,11 +18,11 @@ import homeSidebar from "./children/home-sidebar.vue";
 })
 export default class HomeContent extends Vue {
   public isSidebarTop = false;
-  public isLogin = false;
+  // public isLogin = false;
   public scrollTop = 0;
   public mounted() {
     window.addEventListener("scroll", this.handleScroll);
-    this.loginOrNot();
+    // this.loginOrNot();
   }
   public handleScroll() {
     this.scrollTop =
@@ -35,11 +35,11 @@ export default class HomeContent extends Vue {
       this.isSidebarTop = false;
     }
   }
-  public loginOrNot() {
-    this.$cookies.get("oauth_token")
-      ? (this.isLogin = true)
-      : (this.isLogin = false);
-  }
+  // public loginOrNot() {
+  //   this.$cookies.get("oauth_token")
+  //     ? (this.isLogin = true)
+  //     : (this.isLogin = false);
+  // }
 }
 </script>
 
