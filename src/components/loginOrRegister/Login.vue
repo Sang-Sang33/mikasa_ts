@@ -33,7 +33,6 @@ export default class LoginOrRegister extends Vue {
     @Prop(Function) sureAction!: SureAction;
     @Prop(Boolean) isLoading!: boolean;
     public userInfo: UserID = { username:'', password: '' };
-    // public isLoading = false;
 }
 
 </script>

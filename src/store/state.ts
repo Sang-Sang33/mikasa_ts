@@ -1,5 +1,5 @@
 const state: any = {
-    userInfo : JSON.parse(
+    userInfo: JSON.parse(
         localStorage.getItem('userInfo')
         || `{
             "avator": "",
@@ -11,7 +11,7 @@ const state: any = {
             "oauth_token": ""
         }`
     ),
-    navList : [
+    navList: [
         { index: "2", content: "推荐", icon: "el-icon-menu" },
         { index: "3", content: "动漫", icon: "el-icon-s-promotion" },
         { index: "4", content: "悬疑", icon: "el-icon-s-opportunity" },
@@ -42,6 +42,27 @@ const state: any = {
             list: [
                 { index: "1-4", content: "用户信息", icon: "el-icon-s-custom" },
                 { index: "1-5", content: "文章详情", icon: "el-icon-tickets" }
+            ]
+        },
+    ],
+    iconData: [
+        {
+            titleClass: "userMsg",
+            icon: [
+                { iconClass: "el-icon-user-solid", iconMsg: "昵称：" },
+                { iconClass: "el-icon-setting", iconMsg: "暂无" },
+            ]
+        }, {
+            titleClass: "article",
+            icon: [
+                { iconClass: "el-icon-s-comment", iconMsg: "头条数：" },
+                { iconClass: "el-icon-document", iconMsg: "文章数：" },
+            ]
+        }, {
+            titleClass: "setting",
+            icon: [
+                { iconClass: "el-icon-setting", iconMsg: "设置" },
+                { iconClass: "el-icon-s-home", iconMsg: "返回首页" },
             ]
         },
     ]

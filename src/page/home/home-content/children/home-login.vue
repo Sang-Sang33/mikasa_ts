@@ -8,29 +8,61 @@
       </el-input>
     </div>
     <div class="card-box">
-      <user-card v-if="userInfo.nickname"></user-card>
-      <login-card v-else></login-card>
+      <user-card 
+        v-if="isLogin"
+        :toLogout="toLogout" 
+        :userInfo="userInfo"
+        @on-avator="handleAvator"
+        >
+      </user-card>
+      <login-card 
+        v-else 
+        :toLogin="toLogin" 
+      >
+      </login-card>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+/* eslint-disable @typescript-eslint/camelcase */
 import userCard from "@/components/userCard/user-card.vue";
 import loginCard from "@/components/loginCard/login-card.vue";
 import { UserInfo } from "@/utils/interfaceData";
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { State } from "vuex-class";
+import { Getter, Mutation, State } from "vuex-class";
 
 @Component({
   name: "home-login",
   components: { userCard, loginCard }
 })
 export default class HomeLogin extends Vue {
-  // @Prop(Boolean) isLogin!: boolean;
   @State("userInfo") userInfo!: UserInfo;
-
+  @Mutation("setUserInfo") setUserInfo: any;
+  @Getter("isLogin") isLogin!: boolean;
   public mounted() {
-    console.log(this.userInfo);
+    // console.log(this.userInfo);
+    // console.log(this.isLogin,'------------isLogin---------------');
+  }
+  public toLogout() {
+    localStorage.removeItem("userInfo");
+    this.$cookies.remove("oauth_token");
+    this.setUserInfo({
+      avator: "",
+      nickname: "",
+      tt_count: 0,
+      article_count: 0,
+      user_id: "",
+      oauth_expire_time: "",
+      oauth_token: ""
+    });
+  }
+  public toLogin() {
+    this.$router.push({ path: "/login", name: "login" });
+  }
+  public handleAvator(name: string){
+    console.log(name);
+    this.$router.push({path:`/${name}`,name});
   }
 }
 </script>

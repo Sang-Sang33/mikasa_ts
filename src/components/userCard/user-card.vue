@@ -11,7 +11,12 @@
       </el-button>
     </div>
     <div class="avatar">
-      <el-avatar :size="80" :src="userInfo.avator"></el-avatar>
+      <el-avatar 
+        :size="80" 
+        :src="userInfo.avator"
+        @click.native="handleAvator"
+      >
+      </el-avatar>
     </div>
     <div class="totalMsg">
       <el-badge :value="userInfo.tt_count">
@@ -27,25 +32,17 @@
 <script lang="ts">
 /* eslint-disable @typescript-eslint/camelcase */
 import { UserInfo } from "@/utils/interfaceData";
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 import { Mutation, State } from "vuex-class";
 @Component
 export default class UserCard extends Vue {
-  @State("userInfo") userInfo!: UserInfo;
-  @Mutation("setUserInfo") setUserInfo: any;
-  public toLogout() {
-    localStorage.removeItem("userInfo");
-    this.$cookies.remove("oauth_token");
-    this.setUserInfo({
-      avator: "",
-      nickname: "",
-      tt_count: 0,
-      article_count: 0,
-      user_id: "",
-      oauth_expire_time: "",
-      oauth_token: ""
-    });
+  @Prop(Function) toLogout!: any;
+  @Prop(Object) userInfo!: UserInfo;
+  @Emit("on-avator")
+  public handleAvator(){
+    return this.name;
   }
+  public name: string = "userCenter";
 }
 </script>
 

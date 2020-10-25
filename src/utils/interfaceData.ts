@@ -16,3 +16,13 @@ export  interface UserInfo {
 export interface SureAction {
     (userId: UserID):void;
 }
+
+export interface Icon {
+    iconClass: string;
+    iconMsg: string;
+}
+  
+export interface IconTitle {
+    titleClass: string;
+    icon: Array<Icon>;
+}
