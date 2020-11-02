@@ -1,8 +1,13 @@
 <template>
     <div>
-        <span v-for="(itemICon,i) in itemData" :key="itemICon.iconClass+i">
-          <i :class="itemICon.iconClass"></i>{{itemICon.iconMsg}}
-        </span>
+        <template v-for="(itemICon,i) in itemData">
+            <span 
+                :key="itemICon.iconClass+i" 
+                @click="itemICon.btnEvent"
+            >
+                <i :class="itemICon.iconClass"></i>{{itemICon.iconMsg}}{{itemICon.value}}
+            </span>
+        </template>
     </div>
 </template>
 

@@ -49,20 +49,62 @@ const state: any = {
         {
             titleClass: "userMsg",
             icon: [
-                { iconClass: "el-icon-user-solid", iconMsg: "昵称：" },
-                { iconClass: "el-icon-setting", iconMsg: "暂无" },
+                {
+                    iconClass: "el-icon-user-solid",
+                    iconMsg: "昵称：",
+                    value:"",
+                    btnEvent() {
+                        console.log(111111111)
+                    }
+                },
+                {
+                    iconClass: "el-icon-setting",
+                    iconMsg: "暂无",
+                    value:"",
+                    btnEvent() {
+                        console.log(22222)
+                    }
+                },
             ]
         }, {
             titleClass: "article",
             icon: [
-                { iconClass: "el-icon-s-comment", iconMsg: "头条数：" },
-                { iconClass: "el-icon-document", iconMsg: "文章数：" },
+                {
+                    iconClass: "el-icon-s-comment",
+                    iconMsg: "头条数：",
+                    value:"",
+                    btnEvent() {
+                        console.log(33333)
+                    }
+                },
+                {
+                    iconClass: "el-icon-document",
+                    iconMsg: "文章数：",
+                    value:"",
+                    btnEvent() {
+                        console.log(4444)
+                    }
+                },
             ]
         }, {
             titleClass: "setting",
             icon: [
-                { iconClass: "el-icon-setting", iconMsg: "设置" },
-                { iconClass: "el-icon-s-home", iconMsg: "返回首页" },
+                {
+                    iconClass: "el-icon-setting",
+                    iconMsg: "设置",
+                    value:"",
+                    btnEvent() { 
+                        console.log(5555)
+                    }
+                },
+                {
+                    iconClass: "el-icon-s-home",
+                    iconMsg: "返回首页",
+                    value:"",
+                    btnEvent() {
+                        console.log(6666)
+                    }
+                },
             ]
         },
     ]

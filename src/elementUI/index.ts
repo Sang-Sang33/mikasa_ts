@@ -16,7 +16,10 @@ import {
   Card,
   Avatar,
   Tag,
-  Badge
+  Badge,
+  TabPane,
+  Tabs,
+  PageHeader
 } from 'element-ui'
 
 const components: any = {
@@ -36,7 +39,10 @@ const components: any = {
   Card,
   Avatar,
   Tag,
-  Badge
+  Badge,
+  TabPane,
+  Tabs,
+  PageHeader
 }
 
 const element = {

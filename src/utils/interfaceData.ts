@@ -20,6 +20,8 @@ export interface SureAction {
 export interface Icon {
     iconClass: string;
     iconMsg: string;
+    value: string|number;
+    btnEvent: any;
 }
   
 export interface IconTitle {
