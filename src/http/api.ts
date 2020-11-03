@@ -11,3 +11,14 @@ export const createUser = (params: UserID) => axios.post('/createUser', params);
  * @param {username,password} 
  */
 export const loginCheck = (params: UserID) => axios.post('/loginCheck', params); 
+
+/**
+ * 
+ */
+export const modifyImg = (params: any) => axios.post('/aliossUpload', params)
+ 
+/**
+ * 
+ */
+
+export const updateUserInfo = (params: any) => axios.post('/updateUserInfo', params)

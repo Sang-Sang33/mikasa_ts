@@ -3,7 +3,7 @@
     <header>
       <el-avatar :size="100" shape="square" :src="userInfo.avator"> </el-avatar>
       <icon-title
-        v-for="(item, index) in iconTitleList"
+        v-for="(item, index) in iconDataList"
         :class="item.titleClass"
         :key="item.titleClass + index"
         :itemData="item.icon"
@@ -26,7 +26,7 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import { UserInfo, Icon, IconTitle } from "@/utils/interfaceData";
-import { State } from "vuex-class";
+import { Getter, State } from "vuex-class";
 import iconTitle from "./title/iconTitle.vue";
 
 @Component({
@@ -35,39 +35,15 @@ import iconTitle from "./title/iconTitle.vue";
 })
 export default class UserCenterPage extends Vue {
   @State("userInfo") userInfo!: UserInfo;
-  @State("iconData") iconData!: Array<IconTitle>;
+  @Getter("iconDataList") iconDataList!: Array<IconTitle>;
   public activeName: string = "first";
   created() {
     console.log(this.userInfo);
-    console.log(this.iconTitleList);
-  }
-  get iconTitleList(): Array<IconTitle> {
-    this.iconData.forEach((item, index) => {
-      item.icon.forEach((itemView, i) => {
-        if (itemView.iconMsg.indexOf("头条") !== -1) {
-          itemView.value = this.userInfo.tt_count;
-        } else if (itemView.iconMsg.indexOf("文章") !== -1) {
-          itemView.value = this.userInfo.article_count;
-        } else if (itemView.iconMsg.indexOf("昵称") !== -1) {
-          itemView.value = this.userInfo.nickname;
-        } else if ( itemView.iconMsg == '设置') {
-          itemView.btnEvent = this.handleSetting;
-        } else if ( itemView.iconMsg == '返回首页' ) {
-          itemView.btnEvent = this.backHome;
-        }
-      });
-    });
-    return this.iconData;
+    console.log(this.iconDataList);
   }
 
   handleClick(tab: any, event: any) {
     console.log(tab, event);
-  }
-  handleSetting(){
-    this.$router.push({ path: "/userSetting", name: "userSetting" });
-  }
-  backHome(){
-    this.$router.push({ path: "/", name: "home" });
   }
 }
 </script>

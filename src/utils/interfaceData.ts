@@ -28,3 +28,7 @@ export interface IconTitle {
     titleClass: string;
     icon: Array<Icon>;
 }
+export interface UpdateUrl { 
+    nickname: string;
+    avator: string;
+}

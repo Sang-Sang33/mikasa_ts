@@ -1,3 +1,5 @@
+import router from "@/router"
+
 const state: any = {
     userInfo: JSON.parse(
         localStorage.getItem('userInfo')
@@ -54,7 +56,7 @@ const state: any = {
                     iconMsg: "昵称：",
                     value:"",
                     btnEvent() {
-                        console.log(111111111)
+                        console.log("昵称：")
                     }
                 },
                 {
@@ -62,7 +64,7 @@ const state: any = {
                     iconMsg: "暂无",
                     value:"",
                     btnEvent() {
-                        console.log(22222)
+                        console.log("暂无")
                     }
                 },
             ]
@@ -74,7 +76,7 @@ const state: any = {
                     iconMsg: "头条数：",
                     value:"",
                     btnEvent() {
-                        console.log(33333)
+                        console.log("头条数：")
                     }
                 },
                 {
@@ -82,7 +84,7 @@ const state: any = {
                     iconMsg: "文章数：",
                     value:"",
                     btnEvent() {
-                        console.log(4444)
+                        console.log("文章数：")
                     }
                 },
             ]
@@ -94,7 +96,7 @@ const state: any = {
                     iconMsg: "设置",
                     value:"",
                     btnEvent() { 
-                        console.log(5555)
+                        router.push({ path: "/userSetting", name: "userSetting" });
                     }
                 },
                 {
@@ -102,7 +104,7 @@ const state: any = {
                     iconMsg: "返回首页",
                     value:"",
                     btnEvent() {
-                        console.log(6666)
+                        router.push({ path: "/", name: "home" });
                     }
                 },
             ]
