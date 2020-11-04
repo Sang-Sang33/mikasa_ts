@@ -68,7 +68,7 @@ export default class AccountInfo extends Vue {
       })
       .catch((err: Error) => {
         console.log(err);
-      });
+      });;;
   }
 }
 </script>
