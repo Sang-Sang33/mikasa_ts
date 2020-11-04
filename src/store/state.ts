@@ -1,9 +1,9 @@
-import router from "@/router"
+import router from "@/router";
 
 const state: any = {
-    userInfo: JSON.parse(
-        localStorage.getItem('userInfo')
-        || `{
+  userInfo: JSON.parse(
+    localStorage.getItem("userInfo") ||
+      `{
             "avator": "",
             "nickname": "",
             "tt_count": 0,
@@ -12,103 +12,103 @@ const state: any = {
             "oauth_expire_time": "",
             "oauth_token": ""
         }`
-    ),
-    navList: [
-        { index: "2", content: "推荐", icon: "el-icon-menu" },
-        { index: "3", content: "动漫", icon: "el-icon-s-promotion" },
-        { index: "4", content: "悬疑", icon: "el-icon-s-opportunity" },
-        { index: "5", content: "热血", icon: "el-icon-s-flag" },
-        { index: "6", content: "体育", icon: "el-icon-basketball" },
-        { index: "7", content: "音乐", icon: "el-icon-lollipop" },
-        { index: "8", content: "风景", icon: "el-icon-picture-outline" },
-        { index: "9", content: "风景", icon: "el-icon-picture-outline" },
-        { index: "10", content: "风景", icon: "el-icon-picture-outline" },
-        { index: "11", content: "风景", icon: "el-icon-picture-outline" },
-    ],
-    subList: [
+  ),
+  navList: [
+    { index: "2", content: "推荐", icon: "el-icon-menu" },
+    { index: "3", content: "动漫", icon: "el-icon-s-promotion" },
+    { index: "4", content: "悬疑", icon: "el-icon-s-opportunity" },
+    { index: "5", content: "热血", icon: "el-icon-s-flag" },
+    { index: "6", content: "体育", icon: "el-icon-basketball" },
+    { index: "7", content: "音乐", icon: "el-icon-lollipop" },
+    { index: "8", content: "风景", icon: "el-icon-picture-outline" },
+    { index: "9", content: "风景", icon: "el-icon-picture-outline" },
+    { index: "10", content: "风景", icon: "el-icon-picture-outline" },
+    { index: "11", content: "风景", icon: "el-icon-picture-outline" }
+  ],
+  subList: [
+    {
+      title: "分组一",
+      list: [
+        { index: "1-1", content: "主页", icon: "el-icon-files" },
+        { index: "1-2", content: "登录", icon: "el-icon-mobile" }
+      ]
+    },
+    {
+      title: "分组二",
+      list: [{ index: "1-3", content: "文章列表", icon: "el-icon-reading" }]
+    },
+    {
+      title: "分组三",
+      list: [
+        { index: "1-4", content: "用户信息", icon: "el-icon-s-custom" },
+        { index: "1-5", content: "文章详情", icon: "el-icon-tickets" }
+      ]
+    }
+  ],
+  iconData: [
+    {
+      titleClass: "userMsg",
+      icon: [
         {
-            title: '分组一',
-            list: [
-                { index: "1-1", content: "主页", icon: "el-icon-files" },
-                { index: "1-2", content: "登录", icon: "el-icon-mobile" },
-            ]
+          iconClass: "el-icon-user-solid",
+          iconMsg: "昵称：",
+          value: "",
+          btnEvent() {
+            console.log("昵称：");
+          }
         },
         {
-            title: '分组二',
-            list: [
-                { index: "1-3", content: "文章列表", icon: "el-icon-reading" }
-            ]
+          iconClass: "el-icon-setting",
+          iconMsg: "暂无",
+          value: "",
+          btnEvent() {
+            console.log("暂无");
+          }
+        }
+      ]
+    },
+    {
+      titleClass: "article",
+      icon: [
+        {
+          iconClass: "el-icon-s-comment",
+          iconMsg: "头条数：",
+          value: "",
+          btnEvent() {
+            console.log("头条数：");
+          }
         },
         {
-            title: '分组三',
-            list: [
-                { index: "1-4", content: "用户信息", icon: "el-icon-s-custom" },
-                { index: "1-5", content: "文章详情", icon: "el-icon-tickets" }
-            ]
-        },
-    ],
-    iconData: [
+          iconClass: "el-icon-document",
+          iconMsg: "文章数：",
+          value: "",
+          btnEvent() {
+            console.log("文章数：");
+          }
+        }
+      ]
+    },
+    {
+      titleClass: "setting",
+      icon: [
         {
-            titleClass: "userMsg",
-            icon: [
-                {
-                    iconClass: "el-icon-user-solid",
-                    iconMsg: "昵称：",
-                    value:"",
-                    btnEvent() {
-                        console.log("昵称：")
-                    }
-                },
-                {
-                    iconClass: "el-icon-setting",
-                    iconMsg: "暂无",
-                    value:"",
-                    btnEvent() {
-                        console.log("暂无")
-                    }
-                },
-            ]
-        }, {
-            titleClass: "article",
-            icon: [
-                {
-                    iconClass: "el-icon-s-comment",
-                    iconMsg: "头条数：",
-                    value:"",
-                    btnEvent() {
-                        console.log("头条数：")
-                    }
-                },
-                {
-                    iconClass: "el-icon-document",
-                    iconMsg: "文章数：",
-                    value:"",
-                    btnEvent() {
-                        console.log("文章数：")
-                    }
-                },
-            ]
-        }, {
-            titleClass: "setting",
-            icon: [
-                {
-                    iconClass: "el-icon-setting",
-                    iconMsg: "设置",
-                    value:"",
-                    btnEvent() { 
-                        router.push({ path: "/userSetting", name: "userSetting" });
-                    }
-                },
-                {
-                    iconClass: "el-icon-s-home",
-                    iconMsg: "返回首页",
-                    value:"",
-                    btnEvent() {
-                        router.push({ path: "/", name: "home" });
-                    }
-                },
-            ]
+          iconClass: "el-icon-setting",
+          iconMsg: "设置",
+          value: "",
+          btnEvent() {
+            router.push({ path: "/userSetting", name: "userSetting" });
+          }
         },
-    ]
-}
-export default state
+        {
+          iconClass: "el-icon-s-home",
+          iconMsg: "返回首页",
+          value: "",
+          btnEvent() {
+            router.push({ path: "/", name: "home" });
+          }
+        }
+      ]
+    }
+  ]
+};
+export default state;

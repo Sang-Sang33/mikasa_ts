@@ -1,9 +1,6 @@
 <template>
   <div class="content">
-    <home-sidebar 
-      :isSidebarTop="isSidebarTop"
-    >
-    </home-sidebar>
+    <home-sidebar :isSidebarTop="isSidebarTop"> </home-sidebar>
     <home-article></home-article>
     <home-login></home-login>
   </div>
@@ -20,7 +17,8 @@ import homeSidebar from "./children/home-sidebar.vue";
   components: { homeArticle, homeLogin, homeSidebar }
 })
 export default class HomeContent extends Vue {
-  @Provide() msg: string = '登录后可以保存您的浏览喜好、评论、收藏，并与APP同步，更可以发布微头条';
+  @Provide() msg: string =
+    "登录后可以保存您的浏览喜好、评论、收藏，并与APP同步，更可以发布微头条";
   public isSidebarTop = false;
   public scrollTop = 0;
   public mounted() {
@@ -31,9 +29,9 @@ export default class HomeContent extends Vue {
       window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop;
-    this.scrollTop >= 30  
-      ?this.isSidebarTop = true
-      :this.isSidebarTop = false;
+    this.scrollTop >= 30
+      ? (this.isSidebarTop = true)
+      : (this.isSidebarTop = false);
   }
 }
 </script>

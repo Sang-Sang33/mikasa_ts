@@ -8,18 +8,14 @@
       </el-input>
     </div>
     <div class="card-box">
-      <user-card 
+      <user-card
         v-if="isLogin"
-        :toLogout="toLogout" 
+        :toLogout="toLogout"
         :userInfo="userInfo"
         @on-avator="handleAvator"
-        >
-      </user-card>
-      <login-card 
-        v-else 
-        :toLogin="toLogin" 
       >
-      </login-card>
+      </user-card>
+      <login-card v-else :toLogin="toLogin"> </login-card>
     </div>
   </div>
 </template>
@@ -29,7 +25,7 @@
 import userCard from "@/components/userCard/user-card.vue";
 import loginCard from "@/components/loginCard/login-card.vue";
 import { UserInfo } from "@/utils/interfaceData";
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 import { Getter, Mutation, State } from "vuex-class";
 
 @Component({
@@ -60,9 +56,9 @@ export default class HomeLogin extends Vue {
   public toLogin() {
     this.$router.push({ path: "/login", name: "login" });
   }
-  public handleAvator(name: string){
+  public handleAvator(name: string) {
     console.log(name);
-    this.$router.push({path:`/${name}`,name});
+    this.$router.push({ path: `/${name}`, name });
   }
 }
 </script>

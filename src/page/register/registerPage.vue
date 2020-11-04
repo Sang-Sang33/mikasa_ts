@@ -25,10 +25,11 @@ export default class RegisterPage extends Vue {
       .then(res => {
         this.isLoading = false;
         if (res.data.status === 0) {
-            this.toLoginPage();
+          this.toLoginPage();
         }
       })
-      .catch(err => {
+      .catch((err: Error) => {
+        console.log(err);
         this.isLoading = false;
       });
   }
@@ -38,5 +39,4 @@ export default class RegisterPage extends Vue {
 }
 </script>
 
-<style lang="less">
-</style>
+<style lang="less"></style>

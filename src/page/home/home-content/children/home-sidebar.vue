@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar" :style="isSidebarTop?'top:0;':'top:51px;'">
+  <div class="sidebar" :style="isSidebarTop ? 'top:0;' : 'top:51px;'">
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
@@ -57,11 +57,10 @@ export default class HomeSidebar extends Vue {
   public handleClose(key: any, keyPath: any) {
     console.log(key, keyPath);
   }
-  public mounted(){
+  public mounted() {
     // console.log(this.isSidebarTop);
   }
 }
 </script>
 
-<style lang="less">
-</style>
+<style lang="less"></style>

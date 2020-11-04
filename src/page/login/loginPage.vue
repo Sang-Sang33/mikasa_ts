@@ -30,7 +30,7 @@ export default class LoginPage extends Vue {
           this.setData(res);
         }
       })
-      .catch(err => {
+      .catch((err: Error) => {
         this.isLoading = false;
       });
   }
@@ -55,5 +55,4 @@ export default class LoginPage extends Vue {
 }
 </script>
 
-<style lang="less">
-</style>
+<style lang="less"></style>

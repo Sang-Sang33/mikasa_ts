@@ -13,10 +13,14 @@
     <article>
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane name="first">
-          <span slot="label" class="tab"><i class="el-icon-s-comment"></i> 微头条</span>
+          <span slot="label" class="tab"
+            ><i class="el-icon-s-comment"></i> 微头条</span
+          >
         </el-tab-pane>
         <el-tab-pane name="second">
-          <span slot="label" class="tab"><i class="el-icon-document"></i>文章</span>
+          <span slot="label" class="tab"
+            ><i class="el-icon-document"></i>文章</span
+          >
         </el-tab-pane>
       </el-tabs>
     </article>
@@ -25,7 +29,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { UserInfo, Icon, IconTitle } from "@/utils/interfaceData";
+import { UserInfo, IconTitle } from "@/utils/interfaceData";
 import { Getter, State } from "vuex-class";
 import iconTitle from "./title/iconTitle.vue";
 

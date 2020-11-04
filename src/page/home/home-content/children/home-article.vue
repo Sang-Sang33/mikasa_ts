@@ -1,17 +1,12 @@
 <template>
-    <div class="article">article</div>
+  <div class="article">article</div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from "vue-property-decorator";
 
-@Component 
-export default class HomeArticle extends Vue {
-
-}
-
+@Component
+export default class HomeArticle extends Vue {}
 </script>
 
-<style lang="less">
-
-</style>
+<style lang="less"></style>

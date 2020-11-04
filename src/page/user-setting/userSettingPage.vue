@@ -7,21 +7,16 @@
     <content>
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane name="first">
-          <span slot="label" class="tab"><i class="el-icon-postcard"></i>账号信息</span>
-          <el-row :gutter="10" type="flex" align="middle">
-            <el-col :span="2" :offset="1"><div>昵称：</div></el-col>
-            <el-col :span="10"><el-input v-model="UpdateUserInfo.nickname" placeholder="请输入内容"></el-input></el-col>
-          </el-row>
-          <el-row :gutter="10" type="flex" align="middle">
-            <el-col :span="2" :offset="1"><div>头像：</div></el-col>
-            <el-col :span="10">
-              <el-avatar :size="100" shape="square" :src="UpdateUserInfo.avator"> </el-avatar>
-              <input type="file" @change="modifyImg" />
-            </el-col>
-          </el-row>
+          <span slot="label" class="tab"
+            ><i class="el-icon-postcard"></i>账号信息</span
+          >
+          <account-info :updateUrl="updateUrl" @on-updateUrl="modifyImg">
+          </account-info>
         </el-tab-pane>
         <el-tab-pane name="second">
-          <span slot="label" class="tab"><i class="el-icon-key"></i>密码管理</span>
+          <span slot="label" class="tab"
+            ><i class="el-icon-key"></i>密码管理</span
+          >
         </el-tab-pane>
       </el-tabs>
     </content>
@@ -29,43 +24,41 @@
 </template>
 
 <script lang="ts">
-interface FileList {
-  name: string;
-  url: string;
-}
+import accountInfo from "./children/accountInfo.vue";
 import { Vue, Component } from "vue-property-decorator";
-import { State } from 'vuex-class';
-import { UserInfo, UpdateUrl} from "@/utils/interfaceData";
-import { modifyImg, updateUserInfo } from "@/http/api"
-@Component
+import { State } from "vuex-class";
+import { UserInfo, UpdateUrl } from "@/utils/interfaceData";
+import { modifyImg } from "@/http/api";
+@Component({
+  name: "userSetting",
+  components: { accountInfo }
+})
 export default class UserSettingPage extends Vue {
   @State("userInfo") userInfo!: UserInfo;
-    public activeName: string = "first";
-    public UpdateUserInfo: UpdateUrl = {
-      nickname: '',
-      avator: '',
-    }
-
-    goBack() {
-      this.$router.push( { path: "/userCenter", name: "userCenter" } );
-    }
-    handleClick(tab: any, event: any) {
-      console.log(tab, event);
-    }
-    created(){
-      this.UpdateUserInfo.avator = this.userInfo.avator;
-    }
-    modifyImg(ev: any){
-      const params = new FormData();
-      const fl = ev.target.files[0];
-      params.append('file',fl);
-      console.log(params);
-      modifyImg(params).then((res)=>{
-        if(res.data.msg=="上传成功"){
-          this.UpdateUserInfo.avator = res.data.url;
-        }
-      })
-    }
+  public activeName: string = "first";
+  public updateUrl: UpdateUrl = {
+    nickname: "",
+    avator: ""
+  };
+  goBack() {
+    this.$router.push({ path: "/userCenter", name: "userCenter" });
+  }
+  handleClick(tab: any, event: any) {
+    console.log(tab, event);
+  }
+  created() {
+    this.updateUrl.avator = this.userInfo.avator;
+  }
+  modifyImg(ev: any) {
+    const params: FormData = new FormData();
+    const fl = ev.target.files[0];
+    params.append("file", fl);
+    modifyImg(params).then(res => {
+      if (res.data.msg == "上传成功") {
+        this.updateUrl.avator = res.data.url;
+      }
+    });
+  }
 }
 </script>
 
@@ -77,7 +70,7 @@ export default class UserSettingPage extends Vue {
   }
   content {
     .tab {
-        font-size: 18px;
+      font-size: 18px;
     }
   }
 }
@@ -85,6 +78,23 @@ export default class UserSettingPage extends Vue {
   margin-bottom: 20px;
   &:last-child {
     margin-bottom: 0;
+  }
+}
+.updateUserInfo {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  &-fileInput {
+    position: absolute;
+    left: 120px;
+    bottom: 0;
+    height: 30px;
+    width: 75px;
+    cursor: pointer;
+    opacity: 0;
+  }
+  &-fileBtn {
+    margin-left: 20px;
   }
 }
 </style>
