@@ -29,7 +29,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { UserInfo, IconTitle } from "@/utils/interfaceData";
+import { UserInfo, IconTitle } from "@/type";
 import { Getter, State } from "vuex-class";
 import iconTitle from "./title/iconTitle.vue";
 

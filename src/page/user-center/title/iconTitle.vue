@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { Icon } from "@/utils/interfaceData";
+import { Icon } from "@/type";
 
 @Component
 export default class IconTitle extends Vue {

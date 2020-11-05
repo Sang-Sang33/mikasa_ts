@@ -1,5 +1,5 @@
 import { GetterTree } from "vuex";
-import { Icon, IconTitle } from "@/utils/interfaceData";
+import { Icon, IconTitle } from "@/type";
 
 const getters: GetterTree<any, any> = {
   isLogin(state: any): boolean {

@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import Login from "@/components/loginOrRegister/Login.vue";
-import { UserID, UserInfo } from "@/utils/interfaceData";
+import { UserID, UserInfo } from "@/type";
 import { loginCheck } from "@/http/api";
 import { State, Mutation } from "vuex-class";
 @Component({
@@ -31,6 +31,7 @@ export default class LoginPage extends Vue {
         }
       })
       .catch((err: Error) => {
+        console.log(err)
         this.isLoading = false;
       });
   }

@@ -7,16 +7,23 @@
     <content>
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane name="first">
-          <span slot="label" class="tab"
-            ><i class="el-icon-postcard"></i>账号信息</span
+          <span slot="label" class="tab">
+            <i class="el-icon-postcard"></i>
+            账号信息
+          </span>
+          <account-info
+            :modifyAvator="modifyAvator"
+            :isUpdatedAvator="isUpdatedAvator"
           >
-          <account-info :updateUrl="updateUrl" @on-updateUrl="modifyImg">
           </account-info>
         </el-tab-pane>
         <el-tab-pane name="second">
-          <span slot="label" class="tab"
-            ><i class="el-icon-key"></i>密码管理</span
-          >
+          <span slot="label" class="tab">
+            <i class="el-icon-key"></i>
+            密码管理
+          </span>
+          <password-info :modifyPwd="modifyPwd" :isUpdarePwd="isUpdarePwd">
+          </password-info>
         </el-tab-pane>
       </el-tabs>
     </content>
@@ -25,39 +32,55 @@
 
 <script lang="ts">
 import accountInfo from "./children/accountInfo.vue";
+import passwordInfo from "./children/passwordInfo.vue";
 import { Vue, Component } from "vue-property-decorator";
-import { State } from "vuex-class";
-import { UserInfo, UpdateUrl } from "@/utils/interfaceData";
-import { modifyImg } from "@/http/api";
+import { Mutation } from "vuex-class";
+import { UpdateUrl, UpdatePwd } from "@/type";
+import { updatePwd, updateUserInfo } from "@/http/api";
 @Component({
   name: "userSetting",
-  components: { accountInfo }
+  components: { accountInfo, passwordInfo }
 })
 export default class UserSettingPage extends Vue {
-  @State("userInfo") userInfo!: UserInfo;
+  @Mutation("modifyUserInfo") modifyUserInfo!: ({
+    nickname,
+    avator
+  }: UpdateUrl) => void;
   public activeName: string = "first";
-  public updateUrl: UpdateUrl = {
-    nickname: "",
-    avator: ""
-  };
+  public isUpdatedAvator: boolean = false;
+  public isUpdarePwd: boolean = false;
   goBack() {
     this.$router.push({ path: "/userCenter", name: "userCenter" });
   }
   handleClick(tab: any, event: any) {
     console.log(tab, event);
   }
-  created() {
-    this.updateUrl.avator = this.userInfo.avator;
+  //修改头像与昵称
+  modifyAvator(updateUrl: UpdateUrl) {
+    this.isUpdatedAvator = true;
+    updateUserInfo(updateUrl)
+      .then(res => {
+        if (res.data.msg === "修改成功") {
+          this.isUpdatedAvator = false;
+          this.modifyUserInfo(updateUrl);
+        }
+      })
+      .catch((err: Error) => {
+        console.log(err);
+      });
   }
-  modifyImg(ev: any) {
-    const params: FormData = new FormData();
-    const fl = ev.target.files[0];
-    params.append("file", fl);
-    modifyImg(params).then(res => {
-      if (res.data.msg == "上传成功") {
-        this.updateUrl.avator = res.data.url;
-      }
-    });
+  //修改密码
+  modifyPwd(pwd: UpdatePwd) {
+    this.isUpdarePwd = true;
+    updatePwd(pwd)
+      .then(res => {
+        console.log(res)
+        this.isUpdarePwd = false;
+      })
+      .catch((err: Error) => {
+        console.log(err)
+        this.isUpdarePwd = false;
+      });
   }
 }
 </script>
@@ -74,12 +97,7 @@ export default class UserSettingPage extends Vue {
     }
   }
 }
-.el-row {
-  margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
+
 .updateUserInfo {
   position: relative;
   display: flex;
@@ -95,6 +113,25 @@ export default class UserSettingPage extends Vue {
   }
   &-fileBtn {
     margin-left: 20px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  /deep/ .el-input {
+    width: 40%;
+  }
+  & > span {
+    display: block;
+    width: 10%;
+    margin-right: 50px;
+    text-align: right;
+  }
+  &:first-child {
+    margin-top: 10px;
   }
 }
 </style>

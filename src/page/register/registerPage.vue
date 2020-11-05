@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import Register from "@/components/loginOrRegister/Login.vue";
-import { UserID } from "@/utils/interfaceData";
+import { UserID } from "@/type";
 import { createUser } from "@/http/api";
 
 @Component({
