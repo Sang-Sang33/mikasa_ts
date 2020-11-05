@@ -27,7 +27,7 @@
 
 <script lang="ts">
 /* eslint-disable @typescript-eslint/camelcase */
-import { UserInfo } from "@/utils/interfaceData";
+import { UserInfo } from "@/type";
 import { Vue, Component, Prop, Emit } from "vue-property-decorator";
 @Component
 export default class UserCard extends Vue {

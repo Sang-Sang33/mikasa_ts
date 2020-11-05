@@ -1,6 +1,6 @@
 import "./index";
 import axios from "axios";
-import { UserID, UpdateUrl } from "@/utils/interfaceData";
+import { UserID, UpdateUrl, UpdatePwd } from "@/type";
 /**
  * @description 用户注册
  * @param {username,password}
@@ -14,10 +14,15 @@ export const loginCheck = (params: UserID) => axios.post("/loginCheck", params);
 /**
  *@description 上传头像
  */
-export const modifyImg = (params: FormData) =>
+export const uploadAvator = (params: FormData) =>
   axios.post("/aliossUpload", params);
 /**
  *@description 修改用户头像与昵称
  */
 export const updateUserInfo = (params: UpdateUrl) =>
   axios.post("/updateUserInfo", params);
+/**
+ * @description 修改用户密码
+ */
+export const updatePwd = (params: UpdatePwd) =>
+  axios.post("/updatePassword", params);

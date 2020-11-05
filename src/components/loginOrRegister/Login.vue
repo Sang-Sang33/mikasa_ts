@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { UserID, SureAction } from "@/utils/interfaceData";
+import { UserID, SureAction } from "@/type";
 
 @Component
 export default class LoginOrRegister extends Vue {

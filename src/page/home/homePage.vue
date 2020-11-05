@@ -17,4 +17,5 @@ import homeContent from "./home-content/home-content.vue";
 export default class Home extends Vue {}
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+</style>

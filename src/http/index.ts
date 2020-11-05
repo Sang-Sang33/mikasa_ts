@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { Message } from "element-ui";
-import VueCookie from "vue-cookies";
 
 axios.defaults.baseURL = "http://tt.linweiqin.com/api/tt";
 
@@ -9,7 +8,7 @@ axios.defaults.baseURL = "http://tt.linweiqin.com/api/tt";
 axios.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     //是否在发起请求
-    const oauth_token = VueCookie.get("oauth_token");
+    const oauth_token = document.cookie.split("=")[1];
     if (oauth_token) {
       config.data && (config.data["oauth_token"] = oauth_token);
       config.params && (config.params["oauth_token"] = oauth_token);

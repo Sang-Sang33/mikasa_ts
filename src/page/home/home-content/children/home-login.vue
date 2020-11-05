@@ -24,7 +24,7 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import userCard from "@/components/userCard/user-card.vue";
 import loginCard from "@/components/loginCard/login-card.vue";
-import { UserInfo } from "@/utils/interfaceData";
+import { UserInfo } from "@/type";
 import { Vue, Component } from "vue-property-decorator";
 import { Getter, Mutation, State } from "vuex-class";
 

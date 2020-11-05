@@ -33,3 +33,8 @@ export interface UpdateUrl {
   nickname: string;
   avator: string;
 }
+
+export interface UpdatePwd {
+  currentPassword: string;
+  updatePassword: string;
+}
