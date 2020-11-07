@@ -22,7 +22,7 @@
             <i class="el-icon-key"></i>
             密码管理
           </span>
-          <password-info :modifyPwd="modifyPwd" :isUpdarePwd="isUpdarePwd">
+          <password-info :modifyPwd="modifyPwd" :is-updare-pwd="isUpdarePwd">
           </password-info>
         </el-tab-pane>
       </el-tabs>
@@ -37,6 +37,7 @@ import { Vue, Component } from "vue-property-decorator";
 import { Mutation } from "vuex-class";
 import { UpdateUrl, UpdatePwd } from "@/type";
 import { updatePwd, updateUserInfo } from "@/http/api";
+import { VueConstructor } from 'vue';
 @Component({
   name: "userSetting",
   components: { accountInfo, passwordInfo }
@@ -55,7 +56,7 @@ export default class UserSettingPage extends Vue {
   goBack() {
     this.$router.push({ path: "/userCenter", name: "userCenter" });
   }
-  handleClick(tab: any, event: any) {
+  handleClick(tab: VueConstructor, event: MouseEventInit) {
     console.log(tab, event);
   }
   //修改头像与昵称

@@ -31,7 +31,7 @@ export default class LoginPage extends Vue {
         }
       })
       .catch((err: Error) => {
-        console.log(err);
+        console.log(err)
         this.isLoading = false;
       });
   }

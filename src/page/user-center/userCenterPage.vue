@@ -11,18 +11,22 @@
       </icon-title>
     </header>
     <article>
+      
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane name="first">
-          <span slot="label" class="tab"
-            ><i class="el-icon-s-comment"></i> 微头条</span
-          >
+          <span slot="label" class="tab" >
+            <i class="el-icon-s-comment"></i>
+            微头条
+          </span>
         </el-tab-pane>
         <el-tab-pane name="second">
-          <span slot="label" class="tab"
-            ><i class="el-icon-document"></i>文章</span
-          >
+          <span slot="label" class="tab">
+            <i class="el-icon-document"></i>
+            文章
+          </span>
         </el-tab-pane>
       </el-tabs>
+
     </article>
   </div>
 </template>
@@ -32,6 +36,7 @@ import { Vue, Component } from "vue-property-decorator";
 import { UserInfo, IconTitle } from "@/type";
 import { Getter, State } from "vuex-class";
 import iconTitle from "./title/iconTitle.vue";
+import { VueConstructor } from 'vue/types/umd';
 
 @Component({
   name: "userCenter",
@@ -46,7 +51,7 @@ export default class UserCenterPage extends Vue {
     console.log(this.iconDataList);
   }
 
-  handleClick(tab: any, event: any) {
+  handleClick(tab: VueConstructor, event: MouseEventInit) {
     console.log(tab, event);
   }
 }

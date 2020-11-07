@@ -38,3 +38,8 @@ export interface UpdatePwd {
   currentPassword: string;
   updatePassword: string;
 }
+
+export interface RichContent {
+  content: string;
+  title: string;
+}

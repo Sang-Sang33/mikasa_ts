@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar" :style="isSidebarTop ? 'top:0;' : 'top:51px;'">
     <el-menu
-      default-active="2"
+      default-active="1-1"
       class="el-menu-vertical-demo"
       active-text-color="#ffd04b"
       text-color="#666"
