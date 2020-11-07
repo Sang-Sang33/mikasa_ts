@@ -77,11 +77,11 @@ export default class UserSettingPage extends Vue {
     this.isUpdarePwd = true;
     updatePwd(pwd)
       .then(res => {
-        console.log(res);
+        console.log(res)
         this.isUpdarePwd = false;
       })
       .catch((err: Error) => {
-        console.log(err);
+        console.log(err)
         this.isUpdarePwd = false;
       });
   }
